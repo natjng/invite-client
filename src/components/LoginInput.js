@@ -8,18 +8,18 @@ class LoginInput extends Component {
     render() {
         return (
             <Container className="p-3">
-                <form>
+                <Form>
                     <Form.Group controlId="loginForm">
                         {/* <input type="email" name="email" placeholder="Email" /><br/>
                         <input type="submit" /> */}
 
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" name="email" />
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
                     </Form.Group>
-                </form>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
             </Container>
         )
     }
