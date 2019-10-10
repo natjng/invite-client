@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import LoginInput from './components/LoginInput'
+import Login from './containers/Login';
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <LoginInput />
+        <Login />
       </div>
     )
   }

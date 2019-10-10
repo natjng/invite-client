@@ -9,7 +9,7 @@ class LoginInput extends Component {
         return (
             <Container className="p-3">
                 <Form>
-                    <Form.Group controlId="loginForm">
+                    <Form.Group controlId="email">
                         {/* <input type="email" name="email" placeholder="Email" /><br/>
                         <input type="submit" /> */}
 
