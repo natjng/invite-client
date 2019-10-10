@@ -8,13 +8,13 @@ class LoginInput extends Component {
     render() {
         return (
             <Container className="p-3">
-                <Form>
+                <Form onSubmit={this.props.handleSubmit} >
                     <Form.Group controlId="email">
                         {/* <input type="email" name="email" placeholder="Email" /><br/>
                         <input type="submit" /> */}
 
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" name="email" />
+                        <Form.Control type="email" placeholder="Enter email" name="email" onChange={this.props.handleOnChange} />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
