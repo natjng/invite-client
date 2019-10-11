@@ -14,13 +14,23 @@ import Events from './components/Events';
 
 class App extends React.Component {
   // move state here/use store
-
+  // {this.state.loggedIn ? <NavBar /> : <Login />}
+  
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
           <Login />
+          
+          <Switch>
+            {/* <Route exact path="/">
+              <Home />
+            </Route> */}
+            <Route path="/events">
+            <Events />
+            </Route>
+          </Switch>
         </div>
       </Router>
     )
