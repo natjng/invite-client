@@ -1,4 +1,12 @@
-export default function userReducer(state = {}, action) {
+export default function userReducer(
+        state = {
+            email: '',
+            name: '',
+            events: [],
+            hosted_events: []
+        },
+        action
+    ) {
     switch (action.type) {
         case "UPDATE_NAME":
             return {...state, name: action.name}
