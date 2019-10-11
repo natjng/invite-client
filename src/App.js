@@ -1,8 +1,18 @@
 import React from 'react';
 import './App.css';
 import Login from './containers/Login';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  useRouteMatch,
+  useParams
+} from 'react-router-dom';
 
 class App extends React.Component {
+  // move state here/use store
+
   render() {
     return (
       <div className="App">
