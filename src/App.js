@@ -11,24 +11,31 @@ import {
 import Login from './containers/Login';
 import NavBar from './components/NavBar';
 import Events from './components/Events';
+import User from './components/User';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
   // move state here/use store
   // {this.state.loggedIn ? <NavBar /> : <Login />}
   
   render() {
+    console.log('App.js Store state', this.props);
+    
     return (
       <Router>
         <div className="App">
           <NavBar />
           <Login />
-          
+
           <Switch>
             {/* <Route exact path="/">
               <Home />
             </Route> */}
             <Route path="/events">
-            <Events />
+              <Events />
+            </Route>
+            <Route path="/users/6">
+              <User />
             </Route>
           </Switch>
         </div>
@@ -36,6 +43,14 @@ class App extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(App);
 
 // import logo from './logo.svg';
 
@@ -59,5 +74,3 @@ class App extends React.Component {
 //     </div>
 //   );
 // }
-
-export default App;
