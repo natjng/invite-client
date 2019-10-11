@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import Login from './containers/Login';
 import NavBar from './components/NavBar';
+import Events from './components/Events';
 
 class App extends React.Component {
   // move state here/use store
