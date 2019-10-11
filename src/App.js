@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Login from './containers/Login';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,15 +8,20 @@ import {
   useRouteMatch,
   useParams
 } from 'react-router-dom';
+import Login from './containers/Login';
+import NavBar from './components/NavBar';
 
 class App extends React.Component {
   // move state here/use store
 
   render() {
     return (
-      <div className="App">
-        <Login />
-      </div>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <Login />
+        </div>
+      </Router>
     )
   }
 }
