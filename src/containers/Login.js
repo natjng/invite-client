@@ -5,27 +5,44 @@ import User from '../components/User';
 class Login extends React.Component {
     state = {
         loggedIn: false,
-        email: '',
-        name: '',
-        events: [],
-        hosted_events: []
+        user: {
+            email: '',
+            name: '',
+            events: [],
+            hosted_events: []
+        }
     }
 
     getUser = () => {
-        // configObj
-// change to method: 'POST' to use email inputted
-        fetch('http://localhost:3000/users/6')
+        const configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.user)
+        }
+        fetch('http://localhost:3000/users', configObj)
             .then(r => r.json())
             .then(json => {
-                console.log(json)
-                const user = json.data.attributes
-                this.setState({loggedIn: true, email: user.email, name: user.name, events: user.events, hosted_events: user.hosted_events})
+                const data = json.data.attributes
+                this.setState({
+                    loggedIn: true, 
+                    user: {
+                        email: data.email, name: data.name, events: data.events, hosted_events: data.hosted_events
+                    }
+                })
                 console.log(this.state);
             })
     }
 
     handleOnChange = (e) => {
-        this.setState({email: e.target.value})
+        this.setState({
+            ...this.state,
+            user: {
+                ...this.state.user,
+                email: e.target.value
+            }
+        })
     }
 
     handleSubmit = (e) => {
@@ -38,7 +55,7 @@ class Login extends React.Component {
         return (
             <div className="login-container">
                 {this.state.loggedIn ? 
-                <User user={this.state} /> 
+                <User user={this.state.user} /> 
                 : 
                 <LoginInput handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} />
                 }
