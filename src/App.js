@@ -8,8 +8,9 @@ import {
   useRouteMatch,
   useParams
 } from 'react-router-dom';
-import Login from './containers/Login';
 import NavBar from './components/NavBar';
+import Login from './containers/Login';
+import Home from './containers/Home';
 import Events from './components/Events';
 import User from './components/User';
 import { connect } from 'react-redux';
@@ -28,13 +29,13 @@ class App extends React.Component {
           <Login />
 
           <Switch>
-            {/* <Route exact path="/">
+            <Route exact path="/">
               <Home />
-            </Route> */}
+            </Route>
             <Route path="/events">
               <Events />
             </Route>
-            <Route path="/users/6">
+            <Route path="/users">
               <User />
             </Route>
           </Switch>
@@ -46,7 +47,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    currentUser: state.currentUser
   };
 }
 
