@@ -1,13 +1,14 @@
 export default function userReducer(
-        state = {
-            email: '',
-            name: '',
-            events: [],
-            hosted_events: []
-        },
+        state = null,
         action
     ) {
+        console.log(action);
     switch (action.type) {
+        case "LOGIN_USER":
+            return {
+                currentUser: action.user
+            }
+
         case "UPDATE_NAME":
             return {...state, name: action.name}
 
