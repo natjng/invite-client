@@ -2,23 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class User extends React.Component {
-    render() {
-        return (
+    render() {        
+        return(
             <div>
-                {/* {props.user.name ? <h2>Name: {props.user.name}</h2> : ""}<br/>
-                Email: {props.user.email} */}
-                <p>Name: {this.props.user.name}</p>
-                <p>Email: {this.props.user.email}</p>
+                {this.props.currentUser ? <><h2>Profile</h2><p>Name: {this.props.currentUser.name}</p><p>Email: {this.props.currentUser.email}</p>Edit</> : 'no user'}
             </div>
         )
     }
 }
 
 const mapStateToProps = state => {
-    return { user: state.user }
+    return { currentUser: state.user.currentUser }
 }
 
 export default connect(mapStateToProps)(User);
+// export default User;
+
+
+// {this.props.currentUser ? (<div><h2>Profile</h2>
+//     <p>Name: {this.props.currentUser.name}</p>
+//     <p>Email: {this.props.currentUser.email}</p></div>) : ''}
 
 // make separate components for events and hosted events
 // props.events/store.events.map if events : "You don't have any events."
