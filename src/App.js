@@ -27,6 +27,7 @@ class App extends React.Component {
         <div className="App">
           <NavBar />
           <Login />
+          <User />
 
           <Switch>
             <Route exact path="/">
@@ -35,8 +36,8 @@ class App extends React.Component {
             <Route path="/events">
               <Events />
             </Route>
-            <Route path="/users">
-              <User />
+            <Route path="/users/6">
+              <User currentUser={this.props.currentUser} />
             </Route>
           </Switch>
         </div>
