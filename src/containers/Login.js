@@ -1,8 +1,12 @@
 import React from 'react';
-import LoginInput from '../components/LoginInput';
-import User from '../components/User';
+// import LoginInput from '../components/LoginInput';
+// import User from '../components/User';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions';
+import { withRouter } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 class Login extends React.Component {
     state = {
@@ -46,27 +50,39 @@ class Login extends React.Component {
             }
         })
         // redirect to home page
-        console.log(this.state);
     }
 
     render() {
         // debugger
         return (
             <div className="login-container">
-                {this.props.user ? 
-                <User user={this.props.user} /> 
-                : 
-                <LoginInput handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} />
-                }
+                <Container className="p-3">
+                    <Form onSubmit={this.handleSubmit} >
+                        <Form.Group controlId="email">
+                            {/* <input type="email" name="email" placeholder="Email" /><br/>
+                            <input type="submit" /> */}
+
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control 
+                                type="email" 
+                                placeholder="Enter email"
+                                name="email" 
+                                onChange={this.handleOnChange}
+                                value={this.state.user.email}
+                            />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </Container>
             </div>
         )
     }
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         dispatch: 
-//     }
+// const mapStateToProps = state => {
+//     return { currentUser: state.currentUser }
 // }
 
-export default connect(null, { loginUser })(Login);
+export default connect(null, { loginUser })(withRouter(Login));
