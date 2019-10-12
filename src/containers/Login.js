@@ -1,15 +1,13 @@
 import React from 'react';
 import LoginInput from '../components/LoginInput';
 import User from '../components/User';
+import { connect } from 'react-redux';
+import { loginUser } from '../actions';
 
 class Login extends React.Component {
     state = {
-        loggedIn: false,
         user: {
-            email: '',
-            name: '',
-            events: [],
-            hosted_events: []
+            email: ''
         }
     }
 
@@ -25,21 +23,14 @@ class Login extends React.Component {
             .then(r => r.json())
             .then(json => {
                 const data = json.data.attributes
-                this.setState({
-                    loggedIn: true, 
-                    user: {
-                        email: data.email, name: data.name, events: data.events, hosted_events: data.hosted_events
-                    }
-                })
-                console.log(this.state);
+                const user = {email: data.email, name: data.name, events: data.events, hosted_events: data.hosted_events}
+                this.props.loginUser(user);
             })
     }
 
     handleOnChange = (e) => {
         this.setState({
-            ...this.state,
             user: {
-                ...this.state.user,
                 email: e.target.value
             }
         })
@@ -48,14 +39,22 @@ class Login extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.getUser();
+        
+        this.setState({
+            user: {
+                email: ''
+            }
+        })
+        // redirect to home page
+        console.log(this.state);
     }
 
     render() {
         // debugger
         return (
             <div className="login-container">
-                {this.state.loggedIn ? 
-                <User user={this.state.user} /> 
+                {this.props.user ? 
+                <User user={this.props.user} /> 
                 : 
                 <LoginInput handleOnChange={this.handleOnChange} handleSubmit={this.handleSubmit} />
                 }
@@ -64,4 +63,10 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         dispatch: 
+//     }
+// }
+
+export default connect(null, { loginUser })(Login);
