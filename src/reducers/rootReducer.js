@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
-    state: userReducer,
+    user: userReducer,
     // events: eventsReducer, 
     // hostedEvents: hostedEventsReducer
 })
