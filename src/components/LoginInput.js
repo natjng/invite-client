@@ -14,7 +14,13 @@ class LoginInput extends Component {
                         <input type="submit" /> */}
 
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" name="email" onChange={this.props.handleOnChange} />
+                        <Form.Control 
+                            type="email" 
+                            placeholder="Enter email"
+                            name="email" 
+                            onChange={this.props.handleOnChange}
+                            value={this.props.email}
+                        />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
