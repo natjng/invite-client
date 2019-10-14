@@ -10,14 +10,14 @@ class UserContainer extends React.Component {
         return (
             <div className="user-container">
                 <LoginInput loginUser={this.props.loginUser} />
-                <User />
+                <User currentUser={this.props.currentUser} />
             </div>
         )
     }
 }
 
-// const mapStateToProps = state => {
-//     return { currentUser: state.currentUser }
-// }
+const mapStateToProps = state => {
+    return { currentUser: state.currentUser }
+}
 
-export default connect(null, { loginUser })(withRouter(UserContainer));
+export default connect(mapStateToProps, { loginUser })(withRouter(UserContainer));

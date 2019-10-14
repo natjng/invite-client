@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 class User extends React.Component {
     render() {        
@@ -11,13 +10,7 @@ class User extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return state
-    // return { currentUser: state.user.currentUser }
-}
-
-export default connect(mapStateToProps)(User);
-// export default User;
+export default User;
 
 
 // {this.props.currentUser ? (<div><h2>Profile</h2>
