@@ -18,6 +18,8 @@ const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
+export const baseUrl = 'http://localhost:3000'
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
