@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class User extends React.Component {
     render() {        
         return(
-            <div>
+            <div className="user-profile" >
                 {this.props.currentUser ? <><h2>Profile</h2><p>Name: {this.props.currentUser.name}</p><p>Email: {this.props.currentUser.email}</p>Edit</> : 'no user'}
             </div>
         )
