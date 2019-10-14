@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 class UserInput extends React.Component {
     state = {
         user: {
+            id: this.props.currentUser.id,
             name: this.props.currentUser.name,
             email: this.props.currentUser.email,
         }
@@ -14,7 +15,7 @@ class UserInput extends React.Component {
     handleChange = (e) => {
         this.setState({
             user: {
-                // email: e.target.value
+                ...this.state.user,
                 [e.target.name]: e.target.value
             }
         })
@@ -25,16 +26,15 @@ class UserInput extends React.Component {
         this.props.updateUser(this.state.user);
         this.setState({
             user: {
-                name: '',
-                email: '',
+                ...this.state.user,
+                name: this.state.user.name,
+                email: this.state.user.email,
             }
         })
         // redirect to home page
     }
 
     render() {
-        console.log(this.state.user);
-        
         return (
             <Container className="p-3">
                 <h2>Edit Profile</h2>
