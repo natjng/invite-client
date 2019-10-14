@@ -11,24 +11,6 @@ class LoginInput extends React.Component {
         }
     };
 
-    getUser = () => {
-        const configObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state.user)
-        }
-        fetch('http://localhost:3000/users', configObj)
-            .then(r => r.json())
-            .then(json => {
-                const data = json.data.attributes
-                const user = {email: data.email, name: data.name, events: data.events, hosted_events: data.hosted_events}
-                
-                this.props.loginUser(user);
-            })
-    }
-
     handleChange = (e) => {
         this.setState({
             user: {
@@ -39,8 +21,7 @@ class LoginInput extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.getUser();
-        // this.props.loginUser(this.state.user.email);
+        this.props.getUser(this.state.user);
         this.setState({
             user: {
                 email: ''
