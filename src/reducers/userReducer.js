@@ -3,7 +3,8 @@ export default function userReducer(
             email: '', 
             name: '', 
             events: [],
-            hosted_events: []
+            hosted_events: [],
+            loading: false
         },
         action
     ) {
