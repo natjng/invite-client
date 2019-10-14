@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import LoginInput from '../components/LoginInput';
 import User from '../components/User';
 import UserInput from '../components/UserInput';
-import { getUser } from '../actions/userActions';
+import { getUser, updateUser } from '../actions/userActions';
 
 class UserContainer extends React.Component {
     render() {
@@ -12,7 +12,7 @@ class UserContainer extends React.Component {
             <div className="user-container">
                 <LoginInput getUser={this.props.getUser} />
                 <User currentUser={this.props.currentUser} />
-                {this.props.currentUser.id ? <UserInput currentUser={this.props.currentUser} /> : 'not logged in'}
+                {this.props.currentUser.id ? <UserInput updateUser={this.props.updateUser} currentUser={this.props.currentUser} /> : 'not logged in'}
             </div>
         )
     }
@@ -24,7 +24,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getUser: (user) => dispatch(getUser(user))
+        getUser: (user) => dispatch(getUser(user)),
+        updateUser: (user) => dispatch(updateUser(user)),
     }
 }
 
