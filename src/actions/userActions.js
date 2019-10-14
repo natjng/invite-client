@@ -20,3 +20,24 @@ export const getUser = (userLoginStateObj) => {
             })
     }
 }
+
+export const updateUser = (userStateObj) => {
+    return dispatch => {
+        dispatch({type: 'LOADING_USER'})
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userStateObj)
+        }
+        fetch(baseUrl + `/users/${userStateObj.id}`, configObj)
+            .then(r => r.json())
+            .then(json => {
+                const data = json.data.attributes
+                const user = {id: json.data.id, email: data.email, name: data.name, events: data.events, hosted_events: data.hosted_events}
+
+                dispatch({type: 'LOGIN_USER', user})
+            })
+    }
+}
