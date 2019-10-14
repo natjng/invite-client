@@ -12,7 +12,8 @@ class User extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { currentUser: state.user.currentUser }
+    return state
+    // return { currentUser: state.user.currentUser }
 }
 
 export default connect(mapStateToProps)(User);
