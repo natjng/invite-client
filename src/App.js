@@ -9,7 +9,7 @@ import {
   useParams
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Login from './containers/Login';
+import UserContainer from './containers/UserContainer';
 import Home from './containers/Home';
 import Events from './components/Events';
 import User from './components/User';
@@ -20,14 +20,12 @@ class App extends React.Component {
   // {this.state.loggedIn ? <NavBar /> : <Login />}
   
   render() {
-    console.log('App.js Store state', this.props);
-    
+    // console.log('App.js Store state', this.props);
     return (
       <Router>
         <div className="App">
           <NavBar />
-          <Login />
-          <User />
+          <UserContainer />
 
           <Switch>
             <Route exact path="/">
