@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LoginInput from '../components/LoginInput';
 import User from '../components/User';
+import UserInput from '../components/UserInput';
 import { getUser } from '../actions/userActions';
 
 class UserContainer extends React.Component {
@@ -11,6 +12,7 @@ class UserContainer extends React.Component {
             <div className="user-container">
                 <LoginInput getUser={this.props.getUser} />
                 <User currentUser={this.props.currentUser} />
+                {this.props.currentUser.id ? <UserInput currentUser={this.props.currentUser} /> : 'not logged in'}
             </div>
         )
     }
