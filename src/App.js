@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
   // move state here/use store
-  // {this.state.loggedIn ? <NavBar /> : <Login />}
+  // {this.props.currentUser ? <NavBar /> : <Login />}
   
   render() {
     // console.log('App.js Store state', this.props);
@@ -46,8 +46,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // currentUser: state.currentUser
-    state
+    currentUser: state.currentUser
   };
 }
 
