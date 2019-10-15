@@ -1,4 +1,5 @@
 import React from 'react';
+import Event from './Event';
 import {
     Link,
     Switch,
@@ -9,11 +10,16 @@ import {
 class Events extends React.Component {
     render() {
         // let { path, url } = useRouteMatch();
+        const events = this.props.currentUser.events.map(e => <Event key={e.id} event={e} updateEvent={this.props.updateEvent} />)
+
+        const hostedEvents = this.props.currentUser.hosted_events.map(e => <Event key={e.id} event={e} updateEvent={this.props.updateEvent} />)
+
         return (
             <div>
                 <h2>Events</h2>
-                
-                
+                {events}
+                <h2>Hosted Events</h2>
+                {hostedEvents}
             </div>
         )
     }
