@@ -102,7 +102,8 @@ class EventInput extends React.Component {
                     <Form.Group controlId="description">
                         <Form.Label>Description</Form.Label>
                         <Form.Control 
-                            type="text" 
+                            as="textarea"
+                            rows="3"
                             name="description" 
                             onChange={this.handleChange}
                             value={this.state.event.description}
