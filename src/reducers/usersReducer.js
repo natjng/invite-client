@@ -1,4 +1,4 @@
-export default function userReducer(
+export default function usersReducer(
         state = {
             id: '',
             email: '', 
@@ -30,6 +30,12 @@ export default function userReducer(
                 email: action.user.email,
                 loading: false,
             }
+
+        // case 'ADD_EVENT':
+        //     return {
+        //         ...action.user, 
+        //         loading: false,
+        //     }
 
         default:
             return state;
