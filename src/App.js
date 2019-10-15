@@ -14,11 +14,16 @@ import Home from './containers/Home';
 import Events from './components/Events';
 import User from './components/User';
 import { connect } from 'react-redux';
+import { getEvents } from './actions/eventActions';
 
 class App extends React.Component {
   // move state here/use store
   // {this.props.currentUser ? <NavBar /> : <Login />}
   
+  componentDidMount() {
+    this.props.getEvents();
+  }
+
   render() {
     // console.log('App.js Store state', this.props);
     return (
@@ -50,7 +55,13 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+      getEvents: () => dispatch(getEvents()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // import logo from './logo.svg';
 
