@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import UserContainer from './containers/UserContainer';
+import EventsContainer from './containers/EventsContainer';
 import Home from './containers/Home';
 import Events from './components/Events';
 import User from './components/User';
@@ -31,16 +32,17 @@ class App extends React.Component {
         <div className="App">
           <NavBar />
           <UserContainer />
+          <EventsContainer />
 
           <Switch>
             <Route exact path="/">
-              <Home />
+              {/* <Home /> */}
             </Route>
             <Route path="/events">
-              <Events />
+              {/* <Events /> */}
             </Route>
             <Route path="/users/6">
-              <User currentUser={this.props.currentUser} />
+              {/* <User currentUser={this.props.currentUser} /> */}
             </Route>
           </Switch>
         </div>
