@@ -11,3 +11,26 @@ export const getEvents = () => {
             })
     }
 }
+
+export const postEvent = (eventStateObj) => {
+    return dispatch => {
+        dispatch({type: 'LOADING_EVENTS'})
+        const configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(eventStateObj)
+        }
+        fetch(baseUrl + '/events', configObj)
+            .then(r => r.json())
+            .then(json => {
+                if (json.error) {
+                    console.log(json.error);
+                }
+                else {
+                    dispatch({type: 'ADD_EVENT', event: json.data})
+                }
+            })
+    }
+}
