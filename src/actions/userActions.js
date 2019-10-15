@@ -35,9 +35,9 @@ export const updateUser = (userStateObj) => {
             .then(r => r.json())
             .then(json => {
                 const data = json.data.attributes
-                const user = {id: json.data.id, email: data.email, name: data.name, events: data.events, hosted_events: data.hosted_events}
+                const user = {email: data.email, name: data.name}
 
-                dispatch({type: 'LOGIN_USER', user})
+                dispatch({type: 'UPDATE_USER', user})
             })
     }
 }
