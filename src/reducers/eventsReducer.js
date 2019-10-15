@@ -9,11 +9,11 @@ export default function eventsReducer(
         // description: '',
         // details: '',
         // host_id: '',
+        all: [],
         loading: false
     },
     action
 ) {
-    console.log(action);
 switch (action.type) {
     case 'LOADING_EVENTS':
         return {
@@ -23,21 +23,22 @@ switch (action.type) {
 
     case 'SET_EVENTS':
         return {
-            ...action.events, 
+            ...state,
+            all: action.events, 
             loading: false,
         }
 
     case 'ADD_EVENT':
         return {
-            ...action.user, 
+            ...state,
+            all: [...state.all, action.event], 
             loading: false,
         }
 
     case 'UPDATE_EVENT':
         return {
             ...state, 
-            name: action.user.name,
-            email: action.user.email,
+            all: [...state.all, action.event],
             loading: false,
         }
 
