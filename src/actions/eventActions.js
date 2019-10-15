@@ -34,3 +34,26 @@ export const postEvent = (eventStateObj) => {
             })
     }
 }
+
+export const updateEvent = (eventStateObj) => {
+    return dispatch => {
+        dispatch({type: 'LOADING_EVENTS'})
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(eventStateObj)
+        }
+        fetch(baseUrl + '/events', configObj)
+            .then(r => r.json())
+            .then(json => {
+                if (json.error) {
+                    console.log(json.error);
+                }
+                else {
+                    dispatch({type: 'UPDATE_EVENT', event: json.data})
+                }
+            })
+    }
+}
