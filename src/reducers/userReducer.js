@@ -12,27 +12,23 @@ export default function userReducer(
         console.log(action);
     switch (action.type) {
         case 'LOADING_USER':
-            return {...state, loading: true}
-
-        case 'LOGIN_USER':
-            return {...action.user, loading: false}
-
-        case 'UPDATE_NAME':
             return {
                 ...state, 
-                currentUser: {
-                    ...state.currentUser,
-                    name: action.name
-                }
+                loading: true,
             }
 
-        case "UPDATE_EMAIL":
+        case 'LOGIN_USER':
+            return {
+                ...action.user, 
+                loading: false,
+            }
+
+        case 'UPDATE_USER':
             return {
                 ...state, 
-                currentUser: {
-                    ...state.currentUser,
-                    email: action.email
-                }
+                name: action.user.name,
+                email: action.user.email,
+                loading: false,
             }
 
         default:
