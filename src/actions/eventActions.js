@@ -57,3 +57,26 @@ export const updateEvent = (eventStateObj) => {
             })
     }
 }
+
+export const rsvpEvent = (eventUserStateObj) => {
+    return dispatch => {
+        // dispatch({type: 'LOADING_EVENTS'})
+        const configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(eventUserStateObj)
+        }
+        fetch(baseUrl + '/event_users', configObj)
+            .then(r => r.json())
+            .then(eventObj => {
+                if (eventObj.error) {
+                    console.log(eventObj.error);
+                }
+                else {
+                    dispatch({type: 'ADD_EVENT', event: eventObj.data})
+                }
+            })
+    }
+}
