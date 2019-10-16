@@ -6,7 +6,8 @@ export const getUser = (userLoginStateObj) => {
         const configObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
             },
             body: JSON.stringify(userLoginStateObj)
         }
@@ -27,7 +28,8 @@ export const updateUser = (userStateObj) => {
         const configObj = {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
             },
             body: JSON.stringify(userStateObj)
         }

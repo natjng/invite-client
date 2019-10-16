@@ -18,7 +18,8 @@ export const postEvent = (eventStateObj) => {
         const configObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
             },
             body: JSON.stringify(eventStateObj)
         }
@@ -41,11 +42,12 @@ export const updateEvent = (eventStateObj) => {
         const configObj = {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
             },
             body: JSON.stringify(eventStateObj)
         }
-        fetch(baseUrl + '/events', configObj)
+        fetch(baseUrl + `/events/${eventStateObj.id}`, configObj)
             .then(r => r.json())
             .then(json => {
                 if (json.error) {
@@ -64,7 +66,8 @@ export const rsvpEvent = (eventUserObj) => {
         const configObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
             },
             body: JSON.stringify(eventUserObj)
         }
