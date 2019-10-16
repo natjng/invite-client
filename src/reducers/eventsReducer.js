@@ -35,7 +35,7 @@ export default function eventsReducer(
                     ...state.all.slice(0, index),
                     action.event,
                     ...state.all.slice(index + 1)
-                ]
+                ],
                 loading: false,
             }
 
