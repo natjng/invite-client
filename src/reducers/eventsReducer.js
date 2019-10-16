@@ -28,7 +28,7 @@ export default function eventsReducer(
             }
 
         case 'UPDATE_EVENT':
-            index = state.all.findIndex(event => event.id === action.eventId)
+            index = state.all.findIndex(event => event.id === action.event.id)
             return {
                 ...state, 
                 all: [
