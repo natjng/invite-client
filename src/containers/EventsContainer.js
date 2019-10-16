@@ -9,7 +9,7 @@ class EventsContainer extends React.Component {
         return (
             <div className="events-container">
                 <EventInput postEvent={this.props.postEvent} currentUser={this.props.currentUser} />
-                <Events updateEvent={this.props.updateEvent} currentUser={this.props.currentUser} />
+                <Events updateEvent={this.props.updateEvent} />
             </div>
         )
     }
