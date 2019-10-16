@@ -62,7 +62,6 @@ export const updateEvent = (eventStateObj) => {
 
 export const rsvpEvent = (eventUserObj) => {
     return dispatch => {
-        // dispatch({type: 'LOADING_EVENTS'})
         const configObj = {
             method: 'POST',
             headers: {
@@ -72,6 +71,29 @@ export const rsvpEvent = (eventUserObj) => {
             body: JSON.stringify(eventUserObj)
         }
         fetch(baseUrl + '/event_users', configObj)
+            .then(r => r.json())
+            .then(eventObj => {
+                if (eventObj.error) {
+                    console.log(eventObj.error);
+                }
+                else {
+                    dispatch({type: 'UPDATE_EVENT', event: eventObj.data})
+                }
+            })
+    }
+}
+
+export const removeRsvpEvent = (eventUserObj) => {
+    return dispatch => {
+        const configObj = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(eventUserObj)
+        }
+        fetch(baseUrl + `/event_users/${eventUserObj.id}`, configObj)
             .then(r => r.json())
             .then(eventObj => {
                 if (eventObj.error) {
