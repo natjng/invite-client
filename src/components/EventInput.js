@@ -31,8 +31,6 @@ class EventInput extends React.Component {
             ...this.state.event, 
             host_id: this.props.currentUser.id
         }
-        // debugger
-
         this.props.postEvent(event);
         this.setState({
             event: {
@@ -43,7 +41,6 @@ class EventInput extends React.Component {
                 location: '',
                 description: '',
                 details: '',
-                host_id: this.props.currentUser.id,
             }
         })
         // redirect to home page
