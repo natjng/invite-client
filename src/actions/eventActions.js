@@ -58,7 +58,7 @@ export const updateEvent = (eventStateObj) => {
     }
 }
 
-export const rsvpEvent = (eventUserStateObj) => {
+export const rsvpEvent = (eventUserObj) => {
     return dispatch => {
         // dispatch({type: 'LOADING_EVENTS'})
         const configObj = {
@@ -66,7 +66,7 @@ export const rsvpEvent = (eventUserStateObj) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(eventUserStateObj)
+            body: JSON.stringify(eventUserObj)
         }
         fetch(baseUrl + '/event_users', configObj)
             .then(r => r.json())
