@@ -75,7 +75,7 @@ export const rsvpEvent = (eventUserObj) => {
                     console.log(eventObj.error);
                 }
                 else {
-                    dispatch({type: 'ADD_EVENT', event: eventObj.data})
+                    dispatch({type: 'UPDATE_EVENT', event: eventObj.data})
                 }
             })
     }
