@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { postEvent, updateEvent } from '../actions/eventActions';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Redirect } from 'react-router-dom';
 
 class EventInput extends React.Component {
     state = {
@@ -14,7 +17,8 @@ class EventInput extends React.Component {
             location: '',
             description: '',
             details: '',
-        }
+        },
+        submitted: false
     };
 
     handleChange = (e) => {
@@ -22,7 +26,8 @@ class EventInput extends React.Component {
             event: {
                 ...this.state.event,
                 [e.target.name]: e.target.value
-            }
+            },
+            submitted: this.state.submitted
         })
     }
 
@@ -42,12 +47,17 @@ class EventInput extends React.Component {
                 location: '',
                 description: '',
                 details: '',
-            }
+            },
+            submitted: true
         })
-        // redirect to home page
     }
 
     render() {
+
+        if (this.state.submitted) {
+            return <Redirect to="/events" />
+        }
+
         return (
             <Container className="event-form ">
                 <Col style={{ width: '30rem' }}>
@@ -118,4 +128,17 @@ class EventInput extends React.Component {
     }
 }
 
-export default EventInput;
+const mapStateToProps = state => {
+    return { 
+        currentUser: state.currentUser,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        postEvent: (user) => dispatch(postEvent(user)),
+        updateEvent: (user) => dispatch(updateEvent(user)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventInput);
