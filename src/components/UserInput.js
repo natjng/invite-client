@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -36,31 +37,33 @@ class UserInput extends React.Component {
 
     render() {
         return (
-            <Container className="p-3">
-                <h2>Edit Profile</h2>
-                <Form onSubmit={this.handleSubmit} >
-                    <Form.Group controlId="name">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control 
-                            type="text" 
-                            name="name" 
-                            onChange={this.handleChange}
-                            value={this.state.user.name}
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="email">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control 
-                            type="email" 
-                            name="email" 
-                            onChange={this.handleChange}
-                            value={this.state.user.email}
-                        />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
+            <Container className="user-form">
+                <Col style={{ width: '30rem' }}>
+                    <h2>Edit Profile</h2>
+                    <Form onSubmit={this.handleSubmit} >
+                        <Form.Group controlId="name">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control 
+                                type="text" 
+                                name="name" 
+                                onChange={this.handleChange}
+                                value={this.state.user.name}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control 
+                                type="email" 
+                                name="email" 
+                                onChange={this.handleChange}
+                                value={this.state.user.email}
+                            />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
+                </Col>
             </Container>
         )
     }

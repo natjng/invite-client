@@ -1,6 +1,7 @@
 import React from 'react';
 // import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -32,13 +33,14 @@ class LoginInput extends React.Component {
 
     render() {
         return (
-            <Container className="p-3">
+            <Container className="user-form">
+                <Col style={{ width: '30rem' }}>
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group controlId="email">
                         {/* <input type="email" name="email" placeholder="Email" /><br/>
                         <input type="submit" /> */}
 
-                        <Form.Label>Email</Form.Label>
+                        <h3><Form.Label>Login or <br/>Create an Account</Form.Label></h3>
                         <Form.Control 
                             type="email" 
                             placeholder="Enter email"
@@ -51,6 +53,7 @@ class LoginInput extends React.Component {
                         Submit
                     </Button>
                 </Form>
+                </Col>
             </Container>
         )
     }
