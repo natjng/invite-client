@@ -22,21 +22,19 @@ class EventPreview extends React.Component {
         //     event_id: eventId,
         //     user_id: this.props.currentUser.id
         // }
-        this.props.removeRsvpEvent(eventUserObj);
-        console.log(eventUserObj);
-        
+        this.props.removeRsvpEvent(eventUserObj);        
         console.log('cancel rsvp');
     }
 
     render() {       
         const eventUser = this.props.event.attributes.event_users.find(event_user => (event_user.event_id === parseInt(this.props.event.id, 10) && event_user.user_id === parseInt(this.props.currentUser.id, 10)))
-        console.log(eventUser);
+        // console.log(eventUser);
 
         // need to change to this.props.events
         const rsvpButton = this.props.currentUser.events.find(event => event.id === parseInt(this.props.event.id, 10)) ? <><Button variant="light" size="sm" >Going</Button><Button variant="light" size="sm" onClick={() => this.handleCancelRsvp(eventUser)} >Cancel</Button></> : <Button variant="primary" size="sm" onClick={() => this.handleRsvp(this.props.event.id)} >RSVP</Button>
 
         return (
-            <Card style={{ width: '30rem' }}>
+            <Card className="event-card" style={{ width: '30rem' }}>
                 <Card.Header as="h5">{this.props.event.attributes.name}</Card.Header>
                 <Card.Body>
                     {/* <Card.Title>{this.props.event.attributes.name}</Card.Title> */}
