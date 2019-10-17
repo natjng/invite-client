@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Redirect } from 'react-router-dom';
 
 class UserInput extends React.Component {
     state = {
@@ -12,7 +13,8 @@ class UserInput extends React.Component {
             id: this.props.currentUser.id,
             name: this.props.currentUser.name,
             email: this.props.currentUser.email,
-        }
+        },
+        submitted: false
     };
 
     handleChange = (e) => {
@@ -20,7 +22,8 @@ class UserInput extends React.Component {
             user: {
                 ...this.state.user,
                 [e.target.name]: e.target.value
-            }
+            },
+            submitted: this.state.submitted
         })
     }
 
@@ -32,12 +35,17 @@ class UserInput extends React.Component {
                 ...this.state.user,
                 name: this.state.user.name,
                 email: this.state.user.email,
-            }
+            },
+            submitted: true
         })
-        // redirect to profile page
     }
 
     render() {
+
+        if (this.state.submitted) {
+            return <Redirect to="/profile" />
+        }
+
         return (
             <Container className="user-form">
                 <Col style={{ width: '30rem' }}>
