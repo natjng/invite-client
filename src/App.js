@@ -9,7 +9,6 @@ import {
   // useParams
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
-// import UserContainer from './containers/UserContainer';
 import Home from './containers/Home';
 import EventsContainer from './containers/EventsContainer';
 import EventInput from './components/EventInput';
@@ -20,8 +19,6 @@ import { getEvents } from './actions/eventActions';
 import UserInput from './components/UserInput';
 
 class App extends React.Component {
-  // move state here/use store
-  // {this.props.currentUser ? <NavBar /> : <Login />}
 
   showNavBar = () =>  {
     if (this.props.currentUser.id) {
@@ -31,6 +28,23 @@ class App extends React.Component {
   
   componentDidMount() {
     this.props.getEvents();
+  }
+
+  hostingEvents = () => {
+    return this.props.events.all.filter(event => event.attributes.host.id === parseInt(this.props.currentUser.id, 10))
+  }
+
+  attendingEvents = () => {
+    let events = [];
+    this.props.events.all.filter(event => {
+      if (event.attributes.guests.length) {
+        const eventGuestsIds = event.attributes.guests.map(g => g.id)
+        if (eventGuestsIds.find(id => id === parseInt(this.props.currentUser.id, 10))) {
+          events.push(event)
+        }
+      } 
+    })
+    return events;
   }
 
   render() {
@@ -52,13 +66,14 @@ class App extends React.Component {
               <EventInput />
             </Route>
             <Route exact path="/events/attending">
-              <Events />
+              <Events events={this.attendingEvents()} />
             </Route>
             <Route exact path="/events/hosting">
-              <Events />
+              <Events events={this.hostingEvents()} />
             </Route>
             <Route path="/events">
-              <EventsContainer />
+              {this.props.currentUser.id ? <EventsContainer /> : ''}
+              <Events events={this.props.events.all} />
             </Route>
             <Route exact path="/profile">
               <User />
