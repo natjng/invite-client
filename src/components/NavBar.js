@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 class NavBar extends React.Component {
     render() {
         return (
-        <div>
+        <div className="Nav">
             <NavLink 
                 to="/"
-                style={{ marginRight: '10px' }}
+                style={{ marginLeft: '20px', marginRight: '20px'}}
                 activeStyle={{
                     fontWeight: "bold"
                 }} 
@@ -17,14 +17,20 @@ class NavBar extends React.Component {
             </NavLink>
             <NavLink 
                 to="/events"
-                style={{ marginRight: '10px' }}
+                style={{ marginLeft: '20px', marginRight: '20px' }}
                 activeStyle={{
                     fontWeight: "bold"
                 }}
             >
                 Events
             </NavLink>
-            {this.props.currentUser.id ? <NavLink to="/profile">
+            {this.props.currentUser.id ? <NavLink 
+                to="/profile"
+                style={{ marginLeft: '20px', marginRight: '20px' }}
+                activeStyle={{
+                    fontWeight: "bold"
+                }}
+            >
                 Profile
             </NavLink> : ''}
         </div>
