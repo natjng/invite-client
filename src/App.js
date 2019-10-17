@@ -9,9 +9,9 @@ import {
   // useParams
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import UserContainer from './containers/UserContainer';
+// import UserContainer from './containers/UserContainer';
 import EventsContainer from './containers/EventsContainer';
-// import Home from './containers/Home';
+import Home from './containers/Home';
 // import Events from './components/Events';
 import User from './components/User';
 import { connect } from 'react-redux';
@@ -31,13 +31,14 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
+          <header className="App-header">Invite</header>
           <NavBar />
-          <UserContainer />
+          
           
 
           <Switch>
             <Route exact path="/">
-              {/* <Home /> */}
+              <Home />
             </Route>
             <Route path="/events">
               <EventsContainer />
