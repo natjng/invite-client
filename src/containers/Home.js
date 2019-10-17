@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import UserContainer from './UserContainer';
+import Dashboard from './Dashboard';
 
 class Home extends React.Component {
     render() {
         return (
             <div>
-                <h2>Home</h2>
-                {/* show dashboard component */}
-                {this.props.currentUser.id ? `Hello, ${this.props.currentUser.name}` : <UserContainer />}
+                {this.props.currentUser.id ? <Dashboard /> : <UserContainer />}
             </div>
         )
     }
 }
+
+// disconnect dashboard, pass in currentUser prop from Home?
 
 const mapStateToProps = state => {
     return {
