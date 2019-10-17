@@ -91,3 +91,9 @@ a:hover {
 .events-button {
   margin: 2vmin;
 }
+
+.space{
+  width: 2vmin;
+  height: auto;
+  display: inline-block;
+}
