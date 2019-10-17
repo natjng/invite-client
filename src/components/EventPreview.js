@@ -7,6 +7,20 @@ import { rsvpEvent, removeRsvpEvent } from '../actions/eventActions';
 
 class EventPreview extends React.Component {
 
+    state = {
+        likes: 0
+    }
+
+    handleLike = () => {
+        this.setState({likes: this.state.likes + 1})
+    }
+
+    handleDislike = () => {
+        if (this.state.likes) {
+            this.setState({likes: this.state.likes - 1})
+        }
+    }
+
     handleRsvp = (eventId) => {
         const eventUserObj = {
             event_id: eventId,
@@ -47,7 +61,15 @@ class EventPreview extends React.Component {
                         {this.props.event.attributes.date ? <>{(new Date(this.props.event.attributes.date).toDateString())}<br/></> : ''}
                         {this.props.event.attributes.location ? <>{this.props.event.attributes.location}<br/></> : ''}
                     </Card.Text>
+                    {this.state.likes} Likes
+                    <div className="space" />
+                    <Button onClick={this.handleLike} variant="outline-light" >👍</Button>
+                    <div className="space" />
+                    <Button onClick={this.handleDislike} variant="outline-light" >👎</Button>
+                    <br /><br />
+                    
                     {this.userEventStatus()}
+
                 </Card.Body>
             </Card>
         )
