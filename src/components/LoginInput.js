@@ -28,7 +28,6 @@ class LoginInput extends React.Component {
                 email: ''
             }
         })
-        // redirect to home page
     }
 
     render() {
@@ -37,9 +36,6 @@ class LoginInput extends React.Component {
                 <Col style={{ width: '30rem' }}>
                 <Form onSubmit={this.handleSubmit} >
                     <Form.Group controlId="email">
-                        {/* <input type="email" name="email" placeholder="Email" /><br/>
-                        <input type="submit" /> */}
-
                         <h3><Form.Label>Login or <br/>Create an Account</Form.Label></h3>
                         <Form.Control 
                             type="email" 
