@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const NavBar = () => {
-    return (
+class NavBar extends React.Component {
+    render() {
+        return (
         <div>
             <NavLink 
                 to="/"
@@ -22,11 +24,18 @@ const NavBar = () => {
             >
                 Events
             </NavLink>
-            <NavLink to="/">
+            {this.props.currentUser.id ? <NavLink to="/profile">
                 Profile
-            </NavLink>
+            </NavLink> : ''}
         </div>
     )
+    }
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+    return {
+      currentUser: state.currentUser
+    };
+  }
+
+export default connect(mapStateToProps)(NavBar);
