@@ -1,16 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class User extends React.Component {
     render() {        
         return(
             <div className="user-profile" >
-                {this.props.currentUser ? <><h2>Profile</h2><p>Name: {this.props.currentUser.name}</p><p>Email: {this.props.currentUser.email}</p>Edit</> : 'no user'}
+                {this.props.currentUser.id ? <><h2>Profile</h2><p>Name: {this.props.currentUser.name}</p><p>Email: {this.props.currentUser.email}</p><Link to="/profile/edit" >Edit</Link></> : 'no user'}
             </div>
         )
     }
 }
 
-export default User;
+const mapStateToProps = state => {
+    return { currentUser: state.currentUser }
+}
+
+export default connect(mapStateToProps)(User);
 
 
 // {this.props.currentUser ? (<div><h2>Profile</h2>
