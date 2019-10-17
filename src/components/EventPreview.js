@@ -63,11 +63,10 @@ class EventPreview extends React.Component {
                     </Card.Text>
                     {this.state.likes} Likes
                     <div className="space" />
-                    <Button onClick={this.handleLike} variant="outline-light" >👍</Button>
-                    <div className="space" />
-                    <Button onClick={this.handleDislike} variant="outline-light" >👎</Button>
+                    <Button onClick={this.handleLike} variant="outline-light" ><span role="img" aria-label="thumbs up">👍</span></Button>
+                    <Button onClick={this.handleDislike} variant="outline-light" ><span role="img" aria-label="thumbs down">👎</span></Button>
                     <br /><br />
-                    
+
                     {this.userEventStatus()}
 
                 </Card.Body>

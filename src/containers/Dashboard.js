@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                <h2>Hello{this.props.currentUser.name ? `, ${this.props.currentUser.name} 👋` : ' 👋'}</h2>
+                <h2>Hello{this.props.currentUser.name ? `, ${this.props.currentUser.name} 👋` : <span role="img" aria-label="wave"> 👋</span>}</h2>
                 <br />
                 <Link to="/events/new" ><Button>+ Event</Button></Link>
             </div>
