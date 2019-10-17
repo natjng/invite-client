@@ -55,7 +55,7 @@ class EventInput extends React.Component {
     render() {
 
         if (this.state.submitted) {
-            return <Redirect to="/events" />
+            return <Redirect to="/events/hosting" />
         }
 
         return (
