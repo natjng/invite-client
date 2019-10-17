@@ -9,7 +9,6 @@ export default function usersReducer(
         },
         action
     ) {
-        console.log(action);
     switch (action.type) {
         case 'LOADING_USER':
             return {
@@ -30,12 +29,6 @@ export default function usersReducer(
                 email: action.user.email,
                 loading: false,
             }
-
-        // case 'ADD_EVENT':
-        //     return {
-        //         ...action.user, 
-        //         loading: false,
-        //     }
 
         default:
             return state;
