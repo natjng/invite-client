@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { updateUser } from '../actions/userActions';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -32,7 +34,7 @@ class UserInput extends React.Component {
                 email: this.state.user.email,
             }
         })
-        // redirect to home page
+        // redirect to profile page
     }
 
     render() {
@@ -69,4 +71,14 @@ class UserInput extends React.Component {
     }
 }
 
-export default UserInput;
+const mapStateToProps = state => {
+    return { currentUser: state.currentUser }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateUser: (user) => dispatch(updateUser(user)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserInput);
