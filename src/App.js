@@ -3,19 +3,20 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  // Link,
   Switch,
-  useRouteMatch,
-  useParams
+  // useRouteMatch,
+  // useParams
 } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import UserContainer from './containers/UserContainer';
 import EventsContainer from './containers/EventsContainer';
-import Home from './containers/Home';
-import Events from './components/Events';
+// import Home from './containers/Home';
+// import Events from './components/Events';
 import User from './components/User';
 import { connect } from 'react-redux';
 import { getEvents } from './actions/eventActions';
+import UserInput from './components/UserInput';
 
 class App extends React.Component {
   // move state here/use store
@@ -32,17 +33,20 @@ class App extends React.Component {
         <div className="App">
           <NavBar />
           <UserContainer />
-          <EventsContainer />
+          
 
           <Switch>
             <Route exact path="/">
               {/* <Home /> */}
             </Route>
             <Route path="/events">
-              {/* <Events /> */}
+              <EventsContainer />
             </Route>
-            <Route path="/users/6">
-              {/* <User currentUser={this.props.currentUser} /> */}
+            <Route exact path="/profile">
+              <User />
+            </Route>
+            <Route exact path="/profile/edit">
+              <UserInput />
             </Route>
           </Switch>
         </div>
