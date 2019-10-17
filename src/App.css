@@ -29,6 +29,10 @@
   font-weight: bold;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .Nav {
   min-height: 5vh;
   display: flex;
