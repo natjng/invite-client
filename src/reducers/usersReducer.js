@@ -2,9 +2,7 @@ export default function usersReducer(
         state = {
             id: '',
             email: '', 
-            name: '', 
-            events: [],
-            hosted_events: [],
+            name: '',
             loading: false
         },
         action
