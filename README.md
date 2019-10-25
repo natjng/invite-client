@@ -1,6 +1,6 @@
 # Invite
 
-Invite is a landing page for events. 
+Invite is a place to host or discover events.
 
 Invite is created with a React with Redux frontend and a Rails API backend with a PostgreSQL database. Please find the Invite API repository [here](https://github.com/natjng/invite-api).
 
