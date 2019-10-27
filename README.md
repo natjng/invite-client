@@ -30,11 +30,11 @@ In your terminal, cd to the cloned file.
 
 Run `npm install` to install application dependencies.
 
-Run `npm start` to start the application. This command should open a browser window to [http://localhost:3000](http://localhost:3000).
-
 ## Usage
 
 The Invite client works with the [Invite API](https://github.com/natjng/invite-api) to display user and event data. Please follow the Invite API README for installation instructions.
+
+Run `npm start` to start the application. This command should open a browser window to [http://localhost:3000](http://localhost:3000).
 
 On the home page, a user can get started by creating an account with an email address. 
 
