@@ -6,6 +6,22 @@ Invite is created with a React with Redux frontend and a Rails API backend with 
 
 Users can sign up or login with their email address to start using Invite. Users can host events by creating an event and be an event guest by RSVPing to other users' events.
 
+## Features
+
+**User**
+- Can create events
+- The user creating the event is the event host
+- Can RSVP to other users' events as a guest
+- Can cancel RSVP by navigating to the event and clicking 'Cancel'
+- Can navigate to the 'Events' page to view all events on Invite
+- Can toggle 'Events' / 'Attending' or 'Hosting' to view events the user has RSVP'd to or events the user is hosting
+- Can edit profile
+
+**Event**
+- Event belongs to a host
+- Event can have many guests
+- When user is logged in, event card/event shows whether the current user is the event host or if the event has been RSVP'd to
+
 ## Installation
 
 Clone repository. 
@@ -23,22 +39,6 @@ The Invite client works with the [Invite API](https://github.com/natjng/invite-a
 On the home page, a user can get started by creating an account with an email address. 
 
 Upon successful account creation, the user will be logged in and brought to their dashboard where they can choose to create a new event or view existing events. 
-
-## Features
-
-**User:**
-- Can create events
-- The user creating the event is the event host
-- Can RSVP to other users' events as a guest
-- Can cancel RSVP by navigating to the event and clicking 'Cancel'
-- Can navigate to the 'Events' page to view all events on Invite
-- Can toggle 'Events' / 'Attending' or 'Hosting' to view events the user has RSVP'd to or events the user is hosting
-- Can edit profile
-
-**Event:**
-- Event belongs to a host
-- Event can have many guests
-- When user is logged in, event card/event shows whether the current user is the event host or if the event has been RSVP'd to
 
 ## Contributing
 
