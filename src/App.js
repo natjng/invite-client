@@ -27,11 +27,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    console.log('a, 1');
-    
     this.props.getEvents();
-
-    console.log('b, 3');
   }
 
   hostingEvents = () => {
