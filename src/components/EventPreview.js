@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge'
 import { connect } from 'react-redux';
 import { rsvpEvent, removeRsvpEvent } from '../actions/eventActions';
+var moment = require('moment');
 
 class EventPreview extends React.Component {
 
@@ -58,7 +59,7 @@ class EventPreview extends React.Component {
                 <Card.Header as="h5">{this.props.event.attributes.name}</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        {this.props.event.attributes.date ? <>{(new Date(this.props.event.attributes.date).toDateString())}<br/></> : ''}
+                        {this.props.event.attributes.date ? <>{moment(this.props.event.attributes.date).format('ddd, MMM D YYYY')}<br/></> : ''}
                         {this.props.event.attributes.location ? <>{this.props.event.attributes.location}<br/></> : ''}
                     </Card.Text>
                     {this.state.likes} Likes
