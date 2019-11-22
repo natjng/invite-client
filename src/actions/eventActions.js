@@ -1,15 +1,20 @@
 import {baseUrl} from '../index';
 
 export const getEvents = () => {
+    console.log('c, 2');
+    
     return dispatch => {
         dispatch({type: 'LOADING_EVENTS'})
         fetch(baseUrl + '/events')
             .then(r => r.json())
             .then(json => {
+                console.log('d, 4');
+                
                 const events = json.data
                 dispatch({type: 'SET_EVENTS', events})
             })
     }
+    // console.log('e, does not execute');
 }
 
 export const postEvent = (eventStateObj) => {
