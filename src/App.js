@@ -65,15 +65,15 @@ class App extends React.Component {
             <Route exact path="/events/new">
               <EventInput />
             </Route>
-            <Route exact path="/events/attending">
+            {/* <Route exact path="/events/attending">
               <Events events={this.attendingEvents()} />
             </Route>
             <Route exact path="/events/hosting">
               <Events events={this.hostingEvents()} />
-            </Route>
+            </Route> */}
             <Route path="/events">
-              {this.props.currentUser.id ? <EventsContainer /> : ''}
-              <Events events={this.props.events.all} />
+              {this.props.currentUser.id ? <EventsContainer events={this.props.events.all}/> : ''}
+              {/* <Events events={this.props.events.all} /> */}
             </Route>
             <Route exact path="/profile">
               <User />
