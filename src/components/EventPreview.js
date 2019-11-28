@@ -4,6 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge'
 import { connect } from 'react-redux';
 import { rsvpEvent, removeRsvpEvent } from '../actions/eventActions';
+// import {
+//     Link,
+//     // useParams
+// } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap'
 var moment = require('moment');
 
 class EventPreview extends React.Component {
@@ -55,23 +60,25 @@ class EventPreview extends React.Component {
 
     render() {
         return (
-            <Card className="event-card" style={{ width: '30rem' }}>
-                <Card.Header as="h5">{this.props.event.attributes.name}</Card.Header>
-                <Card.Body>
-                    <Card.Text>
-                        {this.props.event.attributes.date ? <>{moment(this.props.event.attributes.date).format('ddd, MMM D YYYY')}<br/></> : ''}
-                        {this.props.event.attributes.location ? <>{this.props.event.attributes.location}<br/></> : ''}
-                    </Card.Text>
-                    {this.state.likes} Likes
-                    <div className="space" />
-                    <Button onClick={this.handleLike} variant="outline-light" ><span role="img" aria-label="thumbs up">👍</span></Button>
-                    <Button onClick={this.handleDislike} variant="outline-light" ><span role="img" aria-label="thumbs down">👎</span></Button>
-                    <br /><br />
+            <LinkContainer className="event-card" style={{ width: '30rem' }} to={`/events/${this.props.event.id}`}>
+                <Card>
+                    <Card.Header as="h5">{this.props.event.attributes.name}</Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            {this.props.event.attributes.date ? <>{moment(this.props.event.attributes.date).format('ddd, MMM D YYYY')}<br/></> : ''}
+                            {this.props.event.attributes.location ? <>{this.props.event.attributes.location}<br/></> : ''}
+                        </Card.Text>
+                        {this.state.likes} Likes
+                        <div className="space" />
+                        <Button onClick={this.handleLike} variant="outline-light" ><span role="img" aria-label="thumbs up">👍</span></Button>
+                        <Button onClick={this.handleDislike} variant="outline-light" ><span role="img" aria-label="thumbs down">👎</span></Button>
+                        <br /><br />
 
-                    {this.userEventStatus()}
+                        {this.userEventStatus()}
 
-                </Card.Body>
-            </Card>
+                    </Card.Body>
+                </Card>
+            </LinkContainer>
         )
     }
 }
