@@ -26,6 +26,9 @@ function EventsContainer({ events, attending, hosting }) {
                 <Route exact path={`${path}/hosting`}>
                     <Events events={hosting}/>
                 </Route>
+                <Route exact path={`${path}/:id`}>
+                    <Event attending={attending} hosting={hosting}/>
+                </Route>
             </Switch> 
         </div>
     )
