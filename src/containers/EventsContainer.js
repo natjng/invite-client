@@ -3,6 +3,7 @@ import { useRouteMatch, Link, Switch, Route } from 'react-router-dom';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import Events from '../components/Events';
+import Event from '../components/Event';
 
 function EventsContainer({ events, attending, hosting }) {
     let { path, url } = useRouteMatch();
@@ -19,8 +20,11 @@ function EventsContainer({ events, attending, hosting }) {
                     <h2>All Events</h2>
                     <Events events={events}/>
                 </Route>  
-                <Route exact path={`${path}/:eventType`}>
-                    <Events attending={attending} hosting={hosting}/>
+                <Route exact path={`${path}/attending`}>
+                    <Events events={attending}/>
+                </Route>
+                <Route exact path={`${path}/hosting`}>
+                    <Events events={hosting}/>
                 </Route>
             </Switch> 
         </div>
@@ -28,34 +32,3 @@ function EventsContainer({ events, attending, hosting }) {
 }
 
 export default EventsContainer;
-
-
-
-            
-
-//                 <Switch>
-//                     <Route exact path="/events/attending">
-//                         events container
-//                         <Events events={attendingEvents} />
-//                     </Route>
-//                     {/* <Route exact path="/events/hosting">
-//                         <Events events={hostingEvents}/>
-//                     </Route> */}
-//                 </Switch>
-
-// import { connect } from 'react-redux';
-// import { updateEvent } from '../actions/eventActions';
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         updateEvent: (user) => dispatch(updateEvent(user)),
-//     }
-// }
-
-// const mapStateToProps = state => {
-//     return {
-//         currentUser: state.currentUser,
-//         events: state.events
-//     }
-// }
-
-// export default connect(mapStateToProps)(EventsContainer);
