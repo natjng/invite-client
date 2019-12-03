@@ -5,7 +5,13 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 var moment = require('moment');
 
-class Event extends React.Component {    
+class Event extends React.Component {
+    // event = this.props.events.find(e => e.id === this.props.match.params.id)
+
+    findEvent = () => {        
+        let event = this.props.events.find(e => e.id === this.props.match.params.id)
+        console.log(event);
+    }
 
     handleClick = () => {
         console.log('rsvp clicked');
@@ -15,6 +21,7 @@ class Event extends React.Component {
     render() {
         return (
             <Card style={{ width: '30rem' }}>
+                {this.findEvent()}
                 Event Show
                 {/* <Card.Body>
                 <Card.Title>{this.props.event.name}</Card.Title>
