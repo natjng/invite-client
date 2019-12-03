@@ -26,9 +26,10 @@ function EventsContainer({ events, attending, hosting }) {
                 <Route exact path={`${path}/hosting`}>
                     <Events events={hosting}/>
                 </Route>
-                <Route exact path={`${path}/:id`}>
-                    <Event attending={attending} hosting={hosting}/>
-                </Route>
+                {/* <Route exact path={`${path}/:id`}>
+                    <Event events={events}/>
+                </Route> */}
+                <Route path={`${path}/:id`} render={({ match }) => <Event match={match} events={events}/>}/>
             </Switch> 
         </div>
     )
