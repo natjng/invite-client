@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { rsvpEvent, removeRsvpEvent } from '../actions/eventActions';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 var moment = require('moment');
 
-class Event extends React.Component {
+class Event extends React.Component {    
 
     handleClick = () => {
         console.log('rsvp clicked');
