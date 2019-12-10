@@ -7,10 +7,16 @@ var moment = require('moment');
 
 class Event extends React.Component {
     // event = this.props.events.find(e => e.id === this.props.match.params.id)
+    // bad practice to use global variables
+
+    // state = {
+    //     event: 
+    // }
 
     findEvent = () => {        
         let event = this.props.events.find(e => e.id === this.props.match.params.id)
         console.log(event);
+        return event;
     }
 
     handleClick = () => {
@@ -19,14 +25,15 @@ class Event extends React.Component {
     }
 
     render() {
+        let event = this.findEvent()
         return (
             <Card style={{ width: '30rem' }}>
-                {this.findEvent()}
-                Event Show
-                {/* <Card.Body>
-                <Card.Title>{this.props.event.name}</Card.Title>
-                {this.props.event.date ? `Date: ${this.props.event.date}` : ''}
-                </Card.Body> */}
+                <Card.Body>
+                <Card.Title>{event.attributes.name}</Card.Title>
+                {event.attributes.date ? <><strong>Date: </strong>{event.attributes.date}<br/></> : ''}
+                {event.attributes.location ? <><strong>Location: </strong>{event.attributes.location}<br/></> : ''}
+                {event.attributes.description ? <><br/><strong>Description: </strong>{event.attributes.description}<br/></> : ''}
+                </Card.Body>
                 <Button variant="primary" >RSVP</Button>
             </Card>
         )
