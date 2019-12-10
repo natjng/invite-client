@@ -30,7 +30,8 @@ class Event extends React.Component {
             <Card style={{ width: '30rem' }}>
                 <Card.Body>
                 <Card.Title>{event.attributes.name}</Card.Title>
-                {event.attributes.date ? <><strong>Date: </strong>{event.attributes.date}<br/></> : ''}
+                {event.attributes.date ? <><strong>Date: </strong>{moment(event.attributes.date).format('dddd, MMMM D, YYYY')}<br/></> : ''}
+                {event.attributes.start_time ? <><strong>Time: </strong>{moment(event.attributes.start_time).format('LT')}<br/></> : ''}
                 {event.attributes.location ? <><strong>Location: </strong>{event.attributes.location}<br/></> : ''}
                 {event.attributes.description ? <><br/><strong>Description: </strong>{event.attributes.description}<br/></> : ''}
                 </Card.Body>
