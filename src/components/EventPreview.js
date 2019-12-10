@@ -64,6 +64,7 @@ class EventPreview extends React.Component {
                     <Card.Text>
                         {this.props.event.attributes.date ? <>{moment(this.props.event.attributes.date).format('ddd, MMM D YYYY')}<br/></> : ''}
                         {this.props.event.attributes.location ? <>{this.props.event.attributes.location}<br/></> : ''}
+                        {this.props.event.attributes.description ? <><br/>{this.props.event.attributes.description}<br/></> : ''}
                     </Card.Text>
                     {this.state.likes} Likes
                     <div className="space" />
