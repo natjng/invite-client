@@ -18,7 +18,8 @@ const store = createStore(rootReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
 
-export const baseUrl = 'http://localhost:3000'
+// export const baseUrl = 'http://localhost:3000'
+export const baseUrl = 'https://invite-demo-api.herokuapp.com'
 
 ReactDOM.render(
     <Provider store={store}>
