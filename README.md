@@ -2,9 +2,11 @@
 
 Invite is a place to host or discover events.
 
-Invite is created with a React with Redux frontend and a Rails API backend with a PostgreSQL database. Please find the Invite API repository [here](https://github.com/natjng/invite-api).
+Invite is created with a React with Redux frontend and a Rails backend API with a PostgreSQL database. Please find the Invite API repository [here](https://github.com/natjng/invite-api).
 
 Users can sign up or login with their email address to start using Invite. Users can host events by creating an event and be an event guest by RSVPing to other users' events.
+
+Here's a [demo video](https://youtu.be/r6ZV14pjgI4).
 
 ## Features
 
